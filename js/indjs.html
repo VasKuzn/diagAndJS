@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let score = 0;
+        let question = "Что растет на Земле? [трава, солнце]"
+        let answer = prompt(question);
+        if (answer.toLowerCase() == "трава") {
+            alert("Ты прав(а)! Супер! +10 очков!");
+            score += 10;
+        }
+        else {
+            alert("Увы :( Ошибка)");
+        }
+        question = "Ты человек? [да, нет]";
+        answer = prompt(question);
+        if (answer.toLowerCase() == "да") {
+            alert("Ты прав(а)! Супер! +10 очков!");
+            score += 10;
+        }
+        else {
+            alert("ОГО О_О");
+        }
+        alert(`Игра окончена! Ваш счет: ${score} из 20!`);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
