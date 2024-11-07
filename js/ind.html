@@ -7,10 +7,25 @@
     <title>Document</title>
     <script>
         let numberOfPeople = +prompt("Введите количество посетителей");
-        let amountOfCheck = +prompt("Введите стоимость заказа");
-        let discountAmount = +prompt("Введите процент чаевых");
-        let output = (amountOfCheck + amountOfCheck * ((1 / 100) * discountAmount)) / numberOfPeople;
-        alert(`Каждый из ${numberOfPeople} посетителей заплатит ${output} рублей для оплаты ${output * numberOfPeople} рублей`);
+        if (Number.isNaN(numberOfPeople) || numberOfPeople < 0 || !Number.isInteger(numberOfPeople)) {
+            alert("Введите положительное целое число посетителей!");
+        }
+        else {
+            let amountOfCheck = Number.parseFloat(prompt("Введите стоимость заказа"));
+            if (amountOfCheck <= 0 || Number.isNaN(amountOfCheck)) {
+                alert("Введите сумму положительным числом!");
+            }
+            else {
+                let discountAmount = Number.parseFloat(prompt("Введите процент чаевых"));
+                if ((discountAmount <= 0 || discountAmount >= 100) || Number.isNaN(discountAmount)) {
+                    alert("Введите корректную скидку! Число от 1 до 99!");
+                }
+                else {
+                    let output = (amountOfCheck + amountOfCheck * ((1 / 100) * discountAmount)) / numberOfPeople;
+                    alert(`Каждый из ${numberOfPeople} посетителей заплатит ${output} рублей для оплаты ${output * numberOfPeople} рублей`);
+                }
+            }
+        }
     </script>
 </head>
 
