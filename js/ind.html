@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let numberOfPeople = +prompt("Введите количество посетителей");
+        let amountOfCheck = +prompt("Введите стоимость заказа");
+        let discountAmount = +prompt("Введите процент чаевых");
+        let output = (amountOfCheck + amountOfCheck * ((1 / 100) * discountAmount)) / numberOfPeople;
+        alert(`Каждый из ${numberOfPeople} посетителей заплатит ${output} рублей для оплаты ${output * numberOfPeople} рублей`);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
