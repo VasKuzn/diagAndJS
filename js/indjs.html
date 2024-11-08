@@ -9,7 +9,7 @@
         let score = 0;
         let question = "Что растет на Земле? [трава, солнце]"
         let answer = prompt(question);
-        if (answer.toLowerCase() == "трава") {
+        if (answer.toLowerCase() == "трава" || answer.toLowerCase().includes("трава")) {
             alert("Ты прав(а)! Супер! +10 очков!");
             score += 10;
         }
@@ -18,7 +18,7 @@
         }
         question = "Ты человек? [да, нет]";
         answer = prompt(question);
-        if (answer.toLowerCase() == "да") {
+        if (answer.toLowerCase() == "да" || answer.toLowerCase().includes("да")) {
             alert("Ты прав(а)! Супер! +10 очков!");
             score += 10;
         }
