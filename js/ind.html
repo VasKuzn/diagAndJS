@@ -4,33 +4,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script>
-        let numberOfPeople = +prompt("Введите количество посетителей");
-        if (Number.isNaN(numberOfPeople) || numberOfPeople < 0 || !Number.isInteger(numberOfPeople)) {
-            alert("Введите положительное целое число посетителей!");
+    <title>Калькулятор чаевых</title>
+    <style>
+        button {
+            display: flex;
+            font-size: 30px;
+            justify-content: center;
+            align-items: center;
+            margin: 10px;
+            background-color: aliceblue;
+            transition: background-color 1s ease-in-out, transform 1s ease-in-out;
+            border-radius: 15px;
         }
-        else {
-            let amountOfCheck = Number.parseFloat(prompt("Введите стоимость заказа"));
-            if (amountOfCheck <= 0 || Number.isNaN(amountOfCheck)) {
-                alert("Введите сумму положительным числом!");
-            }
-            else {
-                let discountAmount = Number.parseFloat(prompt("Введите процент чаевых"));
-                if ((discountAmount <= 0 || discountAmount >= 100) || Number.isNaN(discountAmount)) {
-                    alert("Введите корректную скидку! Число от 1 до 99!");
-                }
-                else {
-                    let output = (amountOfCheck + amountOfCheck * ((1 / 100) * discountAmount)) / numberOfPeople;
-                    alert(`Каждый из ${numberOfPeople} посетителей заплатит ${output} рублей для оплаты ${output * numberOfPeople} рублей`);
-                }
-            }
+
+        button:hover {
+            background-color: azure;
+            transform: translate(-1%, -1%);
         }
-    </script>
+
+        button:active {
+            background-color: lightgreen;
+            transform: scale(1.05);
+            transition: 0.2s ease;
+        }
+
+        p {
+            font-size: 20px;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        .mainb {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            background-color: bisque;
+        }
+    </style>
 </head>
 
 <body>
+    <h1 style="text-align:center">Калькулятор чаевых!</h1>
+    <div class="mainb">
+        <p>Введите количество посетителей:</p>
+        <input id="fip" type="number">
+        <p>Введите стоимость заказа:</p>
+        <input id="sip" type="number">
+        <p>Введите процент чаевых:</p>
+        <input id="tip" type="number">
+        <button id="btnres">Подвести расчет</button>
+    </div>
+    <h1 style="text-align:center">Результаты!</h1>
+    <div class="mainb">
+        <p>Чаевые: <span id="ch"></span> </p>
+        <p>Общая сумма: <span id="su"></span></p>
+        <p>Сумма на человека: <span id="re"></span></p>
+    </div>
+    <script>
+        function CalculateTipAmount(billAmount, tipPercentage) {
+            return billAmount * (tipPercentage / 100);
+        }
 
+        function CalculateTotalAmount(billAmount, tipAmount) {
+            return billAmount + tipAmount;
+        }
+
+        function CalculatePerPersonAmount(totalAmount, numberOfPersons) {
+            return totalAmount / numberOfPersons;
+        }
+
+        const btn = document.getElementById("btnres");
+        btn.addEventListener("click", function () {
+            const billAmount = parseFloat(document.getElementById("sip").value);
+            const tipPercentage = parseFloat(document.getElementById("tip").value);
+            const numberOfPersons = parseInt(document.getElementById("fip").value);
+
+            if (isNaN(billAmount) || isNaN(tipPercentage) || isNaN(numberOfPersons) || billAmount <= 0 || tipPercentage < 0 || numberOfPersons <= 0 || !Number.isInteger(numberOfPersons)) {
+                alert("Введите корректные данные!");
+                return;
+            }
+
+            const tipAmount = CalculateTipAmount(billAmount, tipPercentage);
+            const totalAmount = CalculateTotalAmount(billAmount, tipAmount);
+            const perPersons = CalculatePerPersonAmount(totalAmount, numberOfPersons);
+
+            document.getElementById("ch").innerText = tipAmount.toFixed(2);
+            document.getElementById("su").innerText = totalAmount.toFixed(2);
+            document.getElementById("re").innerText = perPersons.toFixed(2);
+        });
+    </script>
 </body>
 
 </html>
