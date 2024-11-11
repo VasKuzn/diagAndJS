@@ -1,0 +1,15 @@
+{
+  "name": "project-test",
+  "version": "1.0.0",
+  "main": "tester.js",
+  "scripts": {
+    "start": "node tester.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vasiliy",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}
