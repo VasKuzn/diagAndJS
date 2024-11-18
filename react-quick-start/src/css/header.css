@@ -1,0 +1,17 @@
+.headercomp {
+    display: flex;
+    justify-content: center;
+    background-color: darkcyan;
+    color: white;
+    padding: 0px;
+    margin: 5px;
+    font-size: 15px;
+    transition: transform 0.3s ease, background-color 0.5s ease, font-size 0.3s ease;
+    box-shadow: 0px 5px 5px darkcyan;
+}
+
+.headercomp:hover {
+    transform: scale(1.05);
+    background-color: lightblue;
+    font-size: 16px;
+}
