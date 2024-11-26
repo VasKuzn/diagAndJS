@@ -56,6 +56,14 @@ export default {
         newsItem.wasRead = true;  // Устанавливаем значение wasRead в true
       }
     };
+    const updateUnmark = (id) =>
+    {
+      const newsItem = news.value.find(item => item.id === id);
+      if (newsItem) {
+        newsItem.wasRead = false;  // Устанавливаем значение wasRead в true
+        readRate.value--;
+      }
+    }
 
     return {
       dt,
@@ -66,6 +74,7 @@ export default {
       updateOpenRate,
       updateReadRate,
       updateRead,
+      updateUnmark
     };
   },
 };
@@ -89,6 +98,7 @@ export default {
         @open-news="updateOpenRate"
         @read-news="updateReadRate"
         @toggle-read="updateRead"
+        @unmark = "updateUnmark"
       />
     </div>
 

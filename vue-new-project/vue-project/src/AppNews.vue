@@ -2,6 +2,7 @@
     <div class="card">
       <h3>Новость №{{ i + 1 }}: {{ snew }}</h3>
       <button class="btn" @click="toggleDetails">{{ isOpen ? 'Закрыть' : 'Подробнее' }}</button>
+      <button class="btn danger" v-if = "wasRead" @click="unmark">Отметить "непрочитанно"</button>
       <div v-if="isOpen">
         <hr />
         <p>{{ etc }}</p>
@@ -12,8 +13,13 @@
   
   <script>
   import { ref } from 'vue';
+  import AppButton from './AppButton.vue';
+
   
   export default {
+    components: {
+    'app-button': AppButton,
+    },
     props: {
       snew: String,
       i: Number,
@@ -23,7 +29,8 @@
     emits: {
       'open-news': null,
       'read-news': null,
-      'toggle-read': null,  // Новый эмит для отметки новости как прочитанной
+      'toggle-read': null, // Новый эмит для отметки новости как прочитанной
+      'unmark':null
     },
     setup(props, { emit }) {
       const isOpen = ref(false);
@@ -41,12 +48,18 @@
         emit('read-news');  // Отправляем событие о том, что новость прочитана
         emit('toggle-read', props.i);  // Отправляем ID новости в родительский компонент
       };
-  
+      const unmark = () =>
+      {
+        isOpen.value = false;
+        was_read.value = false;
+        emit('unmark',props.i);
+      }
       return {
         isOpen,
         toggleDetails,
         mark,
         was_read,
+        unmark
       };
     }
   };
