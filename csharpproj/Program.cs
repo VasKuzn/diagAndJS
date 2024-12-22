@@ -1,7 +1,7 @@
 ﻿bool isSucceed = false;
 double sum = 0;
 double proc = 0;
-int num = 0;
+uint num = 0;
 while (!isSucceed)
 {
     Console.WriteLine("Введите сумму счета");
@@ -10,7 +10,7 @@ while (!isSucceed)
     string input1 = Console.ReadLine();
     Console.WriteLine("Введите кол-во человек в группе");
     string input2 = Console.ReadLine();
-    isSucceed = double.TryParse(input, out sum) && double.TryParse(input1, out proc) && Int32.TryParse(input2, out num);
+    isSucceed = double.TryParse(input, out sum) && double.TryParse(input1, out proc) && UInt32.TryParse(input2, out num);
     if (isSucceed)
     {
         Console.WriteLine("Успешно");
